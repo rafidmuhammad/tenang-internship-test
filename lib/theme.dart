@@ -12,7 +12,11 @@ Color kGradientColor2 = const Color(0xFF3462FF);
 FontWeight regular = FontWeight.w400;
 FontWeight bold = FontWeight.w700;
 
-TextStyle titleTextStyle = TextStyle(fontWeight: bold, fontSize: 22);
-TextStyle subtitleTextStyle = TextStyle(fontWeight: regular, fontSize: 20);
-TextStyle body1TextStyle = TextStyle(fontWeight: regular, fontSize: 16);
-TextStyle body2TextStyle = TextStyle(fontWeight: regular, fontSize: 14);
+TextStyle titleTextStyle =
+    TextStyle(fontWeight: bold, fontSize: 22, color: kAccentColor1);
+TextStyle subtitleTextStyle =
+    TextStyle(fontWeight: regular, fontSize: 20, color: kAccentColor1);
+TextStyle body1TextStyle =
+    TextStyle(fontWeight: regular, fontSize: 16, color: kAccentColor1);
+TextStyle body2TextStyle =
+    TextStyle(fontWeight: regular, fontSize: 14, color: kAccentColor1);
