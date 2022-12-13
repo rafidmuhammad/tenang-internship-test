@@ -5,7 +5,7 @@ Color kPrimaryColor2 = const Color(0xFF0CD1F9);
 Color kAccentColor1 = const Color(0xFF4E4B66);
 Color kAccentColor2 = const Color(0xFF8A8D9F);
 Color kAccentColor3 = const Color(0xFFEFF0F6);
-Color kWhiteColor4 = const Color(0xFFFFFFFF);
+Color kWhiteColor = const Color(0xFFFFFFFF);
 Color kGradientColor1 = const Color(0xFF4A80FF);
 Color kGradientColor2 = const Color(0xFF3462FF);
 
