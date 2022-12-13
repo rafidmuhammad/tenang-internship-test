@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tes Tenang',
       routes: {
-        '/': (context) => SplashPage(),
-        '/get-started': (context) => GetStartedPage()
+        '/': (context) => const SplashPage(),
+        '/get-started': (context) => const GetStartedPage()
       },
     );
   }

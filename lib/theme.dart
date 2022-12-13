@@ -8,6 +8,7 @@ Color kAccentColor3 = const Color(0xFFEFF0F6);
 Color kWhiteColor = const Color(0xFFFFFFFF);
 Color kGradientColor1 = const Color(0xFF4A80FF);
 Color kGradientColor2 = const Color(0xFF3462FF);
+Color carouselColor = const Color(0xFFFCFCFC);
 
 FontWeight regular = FontWeight.w400;
 FontWeight bold = FontWeight.w700;

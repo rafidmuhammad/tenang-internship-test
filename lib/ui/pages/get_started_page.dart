@@ -1,12 +1,73 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tenang_test/theme.dart';
+import 'package:tenang_test/ui/widget/custom_button.dart';
 
-class GetStartedPage extends StatelessWidget {
+class GetStartedPage extends StatefulWidget {
   const GetStartedPage({super.key});
 
   @override
+  State<GetStartedPage> createState() => _GetStartedPageState();
+}
+
+class _GetStartedPageState extends State<GetStartedPage> {
+  List<Widget> items = [const Welcome1(), const Welcome2(), const Welcome3()];
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
+
+  List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Welcome1();
+    final double height = MediaQuery.of(context).size.height;
+    return Stack(
+      children: [
+        CarouselSlider.builder(
+          itemBuilder: (context, index, realindex) => items[index],
+          itemCount: items.length,
+          carouselController: _controller,
+          options: CarouselOptions(
+            autoPlay: false,
+            enableInfiniteScroll: false,
+            height: height,
+            enlargeCenterPage: false,
+            viewportFraction: 1.0,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _current = index;
+              });
+            },
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: items.map((e) {
+                int index = items.indexOf(e);
+                return Container(
+                  width: 10.0,
+                  height: 10.0,
+                  margin: EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: MediaQuery.of(context).size.width * 0.02),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _current == index
+                        ? carouselColor.withOpacity(0.3)
+                        : kWhiteColor,
+                  ),
+                );
+              }).toList()),
+        ),
+      ],
+    );
   }
 }
 
@@ -63,7 +124,7 @@ class Welcome1 extends StatelessWidget {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 margin: const EdgeInsets.only(left: 22, bottom: 30),
                 width: 444,
@@ -153,7 +214,7 @@ class Welcome2 extends StatelessWidget {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 margin: const EdgeInsets.only(left: 30, bottom: 26),
                 width: 444,
@@ -239,11 +300,21 @@ class Welcome3 extends StatelessWidget {
                       "Reference site about Lorem\nIpsum, giving information origins\nas well as a random",
                       style: body1TextStyle.copyWith(),
                       textAlign: TextAlign.center,
+                    ),
+                    CustomButton(
+                      onPressed: () {},
+                      title: "Continue",
+                      margin: EdgeInsets.only(
+                          top:
+                              ((MediaQuery.of(context).size.height / 2) - 118) /
+                                  2 *
+                                  0.4),
+                      width: MediaQuery.of(context).size.width - (2 * 30),
                     )
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 margin: const EdgeInsets.only(left: 30, bottom: 31),
                 width: 248,
