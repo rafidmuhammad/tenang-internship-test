@@ -10,6 +10,7 @@ Color kGradientColor1 = const Color(0xFF4A80FF);
 Color kGradientColor2 = const Color(0xFF3462FF);
 Color carouselColor = const Color(0xFFFCFCFC);
 Color textFieldColor = const Color(0xFFF4F5F7);
+Color transparentColor = Colors.transparent;
 
 FontWeight regular = FontWeight.w400;
 FontWeight bold = FontWeight.w700;
