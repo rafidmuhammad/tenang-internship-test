@@ -16,7 +16,7 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 40, bottom: 20),
+                  margin: const EdgeInsets.only(top: 40, bottom: 20),
                   width: 100,
                   height: 100,
                   decoration: const BoxDecoration(
@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
                 CustomButton(
                   onPressed: () {},
                   title: "Log out",
-                  margin: EdgeInsets.only(top: 50),
+                  margin: const EdgeInsets.only(top: 50),
                 )
               ],
             ),

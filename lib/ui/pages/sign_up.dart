@@ -13,11 +13,11 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   Widget header() {
     return Container(
-      margin: EdgeInsets.only(top: 40),
+      margin: const EdgeInsets.only(top: 40),
       child: Row(
         children: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
-          Spacer(),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back_ios)),
+          const Spacer(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -80,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return CustomButton(
       onPressed: () {},
       title: "Sign up",
-      margin: EdgeInsets.only(top: 18),
+      margin: const EdgeInsets.only(top: 18),
     );
   }
 
