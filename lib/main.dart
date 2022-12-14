@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tenang_test/ui/pages/get_started_page.dart';
+import 'package:tenang_test/ui/pages/sign_in_page.dart';
 import 'package:tenang_test/ui/pages/splash_page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tes Tenang',
       routes: {
-        '/': (context) => const SplashPage(),
+        '/': (context) => const SignInPage(),
         '/get-started': (context) => const GetStartedPage()
       },
     );
