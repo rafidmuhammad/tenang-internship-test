@@ -8,7 +8,7 @@ class CustomTextField extends StatelessWidget {
   final EdgeInsets margin;
   const CustomTextField(
       {super.key,
-      required this.imageUrl,
+      this.imageUrl = "",
       required this.hintText,
       this.margin = EdgeInsets.zero,
       this.isObscure = false});
@@ -24,10 +24,12 @@ class CustomTextField extends StatelessWidget {
           color: textFieldColor, borderRadius: BorderRadius.circular(25)),
       child: Row(
         children: [
-          Image.asset(
-            imageUrl,
-            width: 18,
-          ),
+          (imageUrl.isNotEmpty
+              ? Image.asset(
+                  imageUrl,
+                  width: 18,
+                )
+              : const SizedBox()),
           const SizedBox(
             width: 17,
           ),

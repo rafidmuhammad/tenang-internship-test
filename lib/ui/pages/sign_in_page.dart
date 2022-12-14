@@ -127,12 +127,16 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget footer() {
+  Widget footer(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text("Do not have account?"),
-        TextButton(onPressed: () {}, child: const Text("Sign up!"))
+        TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/sign-up');
+            },
+            child: const Text("Sign up!"))
       ],
     );
   }
@@ -161,7 +165,7 @@ class SignInPage extends StatelessWidget {
                 const SizedBox(
                   height: 81,
                 ),
-                footer(),
+                footer(context),
                 const SizedBox(
                   height: 27,
                 )

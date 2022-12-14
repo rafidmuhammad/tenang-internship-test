@@ -302,7 +302,10 @@ class Welcome3 extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     CustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/sign-in', (route) => false);
+                      },
                       title: "Continue",
                       margin: EdgeInsets.only(
                           top:
