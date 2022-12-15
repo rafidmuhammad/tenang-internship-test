@@ -46,4 +46,14 @@ class AuthCubit extends Cubit<AuthState> {
       );
     }
   }
+
+  void signInWithGoogle() async {
+    try {
+      emit(AuthLoading());
+      UserModel user = await AuthService().signInWithGoogle();
+      emit(AuthSuccess(user));
+    } catch (e) {
+      AuthFailed(e.toString());
+    }
+  }
 }

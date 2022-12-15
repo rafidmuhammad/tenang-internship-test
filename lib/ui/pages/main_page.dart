@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenang_test/cubit/page_cubit.dart';
 import 'package:tenang_test/theme.dart';
 import 'package:tenang_test/ui/pages/appointment_page.dart';
+import 'package:tenang_test/ui/pages/homepage.dart';
 import 'package:tenang_test/ui/pages/inbox_page.dart';
 import 'package:tenang_test/ui/pages/profile_page.dart';
 import 'package:tenang_test/ui/widget/navigation_bar.dart';
@@ -13,13 +14,13 @@ class MainPage extends StatelessWidget {
   Widget buildContent(currentIndex) {
     switch (currentIndex) {
       case 0:
-        return const AppointmentPage();
+        return HomePage();
       case 1:
         return const AppointmentPage();
       case 2:
         return const InboxPage();
       case 3:
-        return const ProfilePage();
+        return ProfilePage();
 
       default:
         return const AppointmentPage();

@@ -113,7 +113,7 @@ class SignInPage extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is AuthLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
@@ -141,11 +141,17 @@ class SignInPage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        SocialMediaButton(
-          iconWidth: 20,
-          iconHeight: 20,
-          imageUrl: 'assets/google.png',
-          onPressed: () {},
+        BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            return SocialMediaButton(
+              iconWidth: 20,
+              iconHeight: 20,
+              imageUrl: 'assets/google.png',
+              onPressed: () {
+                context.read<AuthCubit>().signInWithGoogle();
+              },
+            );
+          },
         ),
         SocialMediaButton(
           iconWidth: 15.67,

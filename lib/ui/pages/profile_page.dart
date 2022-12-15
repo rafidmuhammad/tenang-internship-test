@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenang_test/cubit/auth_cubit.dart';
@@ -5,7 +6,8 @@ import 'package:tenang_test/theme.dart';
 import 'package:tenang_test/ui/widget/custom_button.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +28,23 @@ class ProfilePage extends StatelessWidget {
                       image: DecorationImage(
                           image: AssetImage("assets/image_profile.png"))),
                 ),
-                BlocBuilder<AuthCubit, AuthState>(
-                  builder: (context, state) {
-                    if (state is AuthSuccess) {
-                      return Column(
-                        children: [
-                          Text(
-                            "${state.user.name}",
-                            style: titleTextStyle.copyWith(
-                              fontSize: 30,
-                            ),
-                          ),
-                          Text(
-                            "${state.user.email}",
-                            style: subtitleTextStyle,
-                          ),
-                        ],
-                      );
-                    }
-                    return SizedBox();
-                  },
+                Column(
+                  children: [
+                    if (user != null) ...[
+                      Text(
+                        "${user!.displayName}",
+                        style: titleTextStyle.copyWith(
+                          fontSize: 30,
+                        ),
+                      ),
+                      Text(
+                        "${user!.email}",
+                        style: subtitleTextStyle,
+                      ),
+                    ] else ...[
+                      const SizedBox()
+                    ]
+                  ],
                 ),
                 BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
