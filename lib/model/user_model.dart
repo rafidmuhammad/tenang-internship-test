@@ -8,7 +8,7 @@ class UserModel extends Equatable {
   UserModel({
     required this.id,
     required this.email,
-    required this.name,
+    this.name = "",
   });
 
   @override

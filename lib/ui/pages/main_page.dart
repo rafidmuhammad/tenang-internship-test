@@ -38,7 +38,7 @@ class MainPage extends StatelessWidget {
             height: 60,
             width: MediaQuery.of(context).size.width - (2 * 18),
             decoration: BoxDecoration(
-                color: kWhiteColor, borderRadius: BorderRadius.circular(18)),
+                color: kAccentColor3, borderRadius: BorderRadius.circular(18)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               // ignore: prefer_const_literals_to_create_immutables

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tenang_test/theme.dart';
 
 class CustomTextField extends StatelessWidget {
+  final TextEditingController controller;
   final String imageUrl;
   final String hintText;
   final bool isObscure;
@@ -11,6 +12,7 @@ class CustomTextField extends StatelessWidget {
       this.imageUrl = "",
       required this.hintText,
       this.margin = EdgeInsets.zero,
+      required this.controller,
       this.isObscure = false});
 
   @override
@@ -35,6 +37,7 @@ class CustomTextField extends StatelessWidget {
           ),
           Expanded(
               child: TextFormField(
+            controller: controller,
             obscureText: isObscure,
             style: body1TextStyle.copyWith(color: kAccentColor1),
             decoration: InputDecoration.collapsed(
