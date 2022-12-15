@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenang_test/cubit/doctor_cubit.dart';
 import 'package:tenang_test/model/doctor_model.dart';
 import 'package:tenang_test/theme.dart';
+import 'package:tenang_test/ui/pages/search_page.dart';
 import 'package:tenang_test/ui/widget/categories.dart';
-import 'package:tenang_test/ui/widget/custom_text_field.dart';
 import 'package:tenang_test/ui/widget/doctor_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Doctor> doctors = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -22,13 +23,38 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  TextEditingController searchController = TextEditingController(text: "");
-
   Widget search() {
-    return CustomTextField(
-      hintText: "Search...",
-      controller: searchController,
-      imageUrl: 'assets/icon_search.png',
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SearchPage(doctors: doctors),
+            ));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(
+            color: textFieldColor, borderRadius: BorderRadius.circular(25)),
+        child: Row(
+          children: [
+            Image.asset(
+              'assets/icon_search.png',
+              width: 18,
+            ),
+            const SizedBox(
+              width: 17,
+            ),
+            Expanded(
+                child: Text(
+              "Search...",
+              style: body1TextStyle.copyWith(color: kAccentColor2),
+            )),
+          ],
+        ),
+      ),
     );
   }
 
@@ -47,6 +73,7 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         if (state is DoctorSuccess) {
+          doctors = state.doctors;
           List<Doctor> data = state.doctors.sublist(0, 3);
           return Container(
             margin: const EdgeInsets.only(top: 40),
@@ -99,8 +126,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  void searchOperation(String searchText) {}
 
   @override
   Widget build(BuildContext context) {
