@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenang_test/cubit/doctor_cubit.dart';
 import 'package:tenang_test/model/doctor_model.dart';
 import 'package:tenang_test/theme.dart';
+import 'package:tenang_test/ui/widget/categories.dart';
 import 'package:tenang_test/ui/widget/custom_text_field.dart';
 import 'package:tenang_test/ui/widget/doctor_card.dart';
 
@@ -35,6 +36,14 @@ class _HomePageState extends State<HomePage> {
     return BlocConsumer<DoctorCubit, DoctorState>(
       listener: (context, state) {
         // TODO: implement listener
+        if (state is DoctorFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+              backgroundColor: Colors.red[700],
+            ),
+          );
+        }
       },
       builder: (context, state) {
         if (state is DoctorSuccess) {
@@ -57,8 +66,37 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }
-        return CircularProgressIndicator();
+        return const CircularProgressIndicator();
       },
+    );
+  }
+
+  Widget categories() {
+    List<String> categories = [
+      "Top",
+      "New",
+      "Last Used",
+    ];
+    return Container(
+      margin: EdgeInsets.only(top: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Categories", style: titleTextStyle),
+          Container(
+            margin: EdgeInsets.only(top: 30),
+            height: 40,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                ...categories
+                    .map((item) => Categories(category: item))
+                    .toList(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -68,7 +106,11 @@ class _HomePageState extends State<HomePage> {
         body: SafeArea(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
-        children: [search(), topDoctor()],
+        children: [
+          search(),
+          topDoctor(),
+          categories(),
+        ],
       ),
     ));
   }
