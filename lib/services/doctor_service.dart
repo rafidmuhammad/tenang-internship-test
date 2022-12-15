@@ -18,7 +18,7 @@ class DoctorService {
         return <Doctor>[];
       }
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

@@ -7,12 +7,25 @@ import 'package:tenang_test/ui/widget/custom_button.dart';
 import 'package:tenang_test/ui/widget/custom_text_field.dart';
 import 'package:tenang_test/ui/widget/social_media_button.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   SignInPage({super.key});
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
   final TextEditingController emailController = TextEditingController(text: '');
+
   final TextEditingController passwordController =
       TextEditingController(text: '');
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   Widget pageHeader() {
     return Center(

@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Tes Tenang',
         routes: {
-          '/': (context) => HomePage(),
+          '/': (context) => const HomePage(),
           '/get-started': (context) => const GetStartedPage(),
           '/sign-in': (context) => SignInPage(),
           '/sign-up': (context) => const SignUpPage(),

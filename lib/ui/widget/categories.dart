@@ -10,16 +10,16 @@ class Categories extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        margin: EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.only(right: 10),
         alignment: Alignment.center,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18), color: kAccentColor3),
         child: Text(
           textAlign: TextAlign.center,
           category,
           style: body2TextStyle.copyWith(fontSize: 16),
         ),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18), color: kAccentColor3),
       ),
     );
   }

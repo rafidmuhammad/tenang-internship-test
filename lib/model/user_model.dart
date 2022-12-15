@@ -5,7 +5,7 @@ class UserModel extends Equatable {
   final String email;
   final String name;
 
-  UserModel({
+  const UserModel({
     required this.id,
     required this.email,
     this.name = "",

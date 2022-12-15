@@ -15,7 +15,7 @@ class AuthService {
       await _auth.currentUser?.updateDisplayName(fullname);
       return UserModel(id: credential.user!.uid, email: email, name: fullname);
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -23,7 +23,7 @@ class AuthService {
     try {
       await _auth.signOut();
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -37,7 +37,7 @@ class AuthService {
           email: email,
           name: userCredential.user!.displayName!);
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

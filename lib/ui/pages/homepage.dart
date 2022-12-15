@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         if (state is DoctorSuccess) {
           List<Doctor> data = state.doctors.sublist(0, 3);
           return Container(
-            margin: EdgeInsets.only(top: 40),
+            margin: const EdgeInsets.only(top: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -78,13 +78,13 @@ class _HomePageState extends State<HomePage> {
       "Last Used",
     ];
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Categories", style: titleTextStyle),
           Container(
-            margin: EdgeInsets.only(top: 30),
+            margin: const EdgeInsets.only(top: 30),
             height: 40,
             child: ListView(
               scrollDirection: Axis.horizontal,
