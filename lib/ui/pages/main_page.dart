@@ -14,7 +14,7 @@ class MainPage extends StatelessWidget {
   Widget buildContent(currentIndex) {
     switch (currentIndex) {
       case 0:
-        return HomePage();
+        return const HomePage();
       case 1:
         return const AppointmentPage();
       case 2:
@@ -23,7 +23,7 @@ class MainPage extends StatelessWidget {
         return ProfilePage();
 
       default:
-        return const AppointmentPage();
+        return const HomePage();
     }
   }
 
