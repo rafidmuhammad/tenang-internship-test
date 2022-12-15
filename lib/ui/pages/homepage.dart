@@ -100,6 +100,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void searchOperation(String searchText) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
