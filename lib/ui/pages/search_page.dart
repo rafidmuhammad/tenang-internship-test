@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tenang_test/model/doctor_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tenang_test/cubit/search_cubit.dart';
 import 'package:tenang_test/ui/widget/custom_text_field.dart';
 import 'package:tenang_test/ui/widget/search_result_item.dart';
 
 class SearchPage extends StatefulWidget {
-  List<Doctor>? doctors = [];
-  SearchPage({super.key, this.doctors});
+  const SearchPage({
+    super.key,
+  });
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -13,13 +15,10 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   TextEditingController searchController = TextEditingController(text: "");
-  List<Doctor>? results = [];
-  List<Doctor>? resultsOut = [];
 
   @override
   void initState() {
     // TODO: implement initState
-    results = widget.doctors;
     searchController.addListener(handler);
     super.initState();
   }
@@ -32,14 +31,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void handler() {
-    setState(() {
-      resultsOut = results
-          ?.where((element) => element.name
-              .toLowerCase()
-              .contains(searchController.text.toLowerCase()))
-          .toList();
-      print("panjang ${resultsOut?.length}");
-    });
+    context.read<SearchCubit>().dataSearch(searchController.text);
   }
 
   Widget search() {
@@ -65,11 +57,22 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget resultsView(List<Doctor>? doctors) {
-    return ListView.builder(
-      itemCount: widget.doctors?.length,
-      itemBuilder: (context, index) {
-        return SearchResultItem(item: widget.doctors?[index]);
+  Widget resultsView() {
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        if (state is SearchSuccess) {
+          return ListView.builder(
+            itemCount: state.results.length,
+            itemBuilder: (context, index) {
+              return SearchResultItem(item: state.results[index]);
+            },
+          );
+        } else if (state is SearchLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return const Center(child: SizedBox());
       },
     );
   }
@@ -83,7 +86,7 @@ class _SearchPageState extends State<SearchPage> {
           child: Column(
             children: [
               header(context),
-              Expanded(child: resultsView(resultsOut)),
+              Expanded(child: resultsView()),
             ],
           ),
         ),

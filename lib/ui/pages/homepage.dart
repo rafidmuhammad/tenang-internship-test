@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SearchPage(doctors: doctors),
+              builder: (context) => const SearchPage(),
             ));
       },
       child: Container(
@@ -93,7 +93,9 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }
-        return const CircularProgressIndicator();
+        return Container(
+            margin: const EdgeInsets.only(top: 15),
+            child: const Center(child: CircularProgressIndicator()));
       },
     );
   }

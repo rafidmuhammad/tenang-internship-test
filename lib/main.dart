@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenang_test/cubit/auth_cubit.dart';
 import 'package:tenang_test/cubit/doctor_cubit.dart';
 import 'package:tenang_test/cubit/page_cubit.dart';
+import 'package:tenang_test/cubit/search_cubit.dart';
 import 'package:tenang_test/firebase_options.dart';
 import 'package:tenang_test/ui/pages/get_started_page.dart';
-import 'package:tenang_test/ui/pages/homepage.dart';
 import 'package:tenang_test/ui/pages/main_page.dart';
 import 'package:tenang_test/ui/pages/sign_in_page.dart';
 import 'package:tenang_test/ui/pages/sign_up.dart';
@@ -36,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DoctorCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(),
         ),
       ],
       child: MaterialApp(
