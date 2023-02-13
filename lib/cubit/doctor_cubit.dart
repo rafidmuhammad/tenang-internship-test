@@ -12,7 +12,7 @@ class DoctorCubit extends Cubit<DoctorState> {
     try {
       emit(DoctorLoading());
       List<Doctor> doctors = await DoctorService().getDoctor();
-      emit(DoctorSuccess(doctors));
+      emit(DoctorSuccess(doctors.sublist(0, 3)));
     } catch (e) {
       emit(DoctorFailed(e.toString()));
     }

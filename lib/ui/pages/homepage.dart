@@ -73,8 +73,6 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         if (state is DoctorSuccess) {
-          doctors = state.doctors;
-          List<Doctor> data = state.doctors.sublist(0, 3);
           return Container(
             margin: const EdgeInsets.only(top: 40),
             child: Column(
@@ -85,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   style: titleTextStyle,
                 ),
                 const SizedBox(height: 15),
-                ...data
+                ...state.doctors
                     .map((item) => DoctorCard(
                         email: item.email, name: item.name, phone: item.phone))
                     .toList()
